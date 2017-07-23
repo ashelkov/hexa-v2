@@ -10,10 +10,15 @@ injectGlobal`
 
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #faf8ef;
+    color: #776e65;
+    font-size: 18px;
   }
 
   body.fontLoaded {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {
@@ -24,7 +29,7 @@ injectGlobal`
 
   p,
   label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.5em;
   }
 `;

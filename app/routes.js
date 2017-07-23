@@ -16,9 +16,16 @@ export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
-  return [
-    {
+  return [{
       path: '/',
+      name: 'game',
+      getComponent(nextState, cb) {
+        import('containers/GamePage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },{
+      path: '/home',
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
