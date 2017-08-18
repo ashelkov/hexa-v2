@@ -32,7 +32,7 @@ const HexagonMesh = styled.div`
   .border {
     fill: none;
     stroke: #000;
-    stroke-width: 2px;
+    stroke-width: 1px;
     pointer-events: none;
   }
 `;
