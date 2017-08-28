@@ -13,23 +13,38 @@ injectGlobal`
     margin: 0;
     padding: 0;
     background: #faf8ef;
-    color: #776e65;
+    color: #776E65;
     font-size: 18px;
   }
 
   body.fontLoaded {
-    font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Encode Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {
-    background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
   }
 
   p,
   label {
-    font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Encode Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.5em;
+  }
+  
+  .primary {
+    color: #43516c;
+  }  
+  .secondary {
+    color: #e5e8c7;
+  }  
+  .color-danger {
+    color: #d85426;
+  }  
+  .color-warning {
+    color: #dba531;
+  } 
+  .color-info {
+    color: #05659e;
   }
 `;

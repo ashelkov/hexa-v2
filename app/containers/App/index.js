@@ -7,22 +7,24 @@
  */
 
 import React from 'react';
+// libs
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+// components
 import withProgressBar from 'components/ProgressBar';
 
-const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
+const AppLayout = styled.div`
+  margin: 0;
+  padding: 0;
   display: flex;
   min-height: 100%;
-  padding: 0 16px;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
 `;
 
 export function App(props) {
   return (
-    <AppWrapper>
+    <AppLayout>
       <Helmet
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
@@ -31,7 +33,7 @@ export function App(props) {
         ]}
       />
       {React.Children.toArray(props.children)}
-    </AppWrapper>
+    </AppLayout>
   );
 }
 

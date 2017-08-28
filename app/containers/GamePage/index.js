@@ -4,20 +4,46 @@
  * Page where game happens
  */
 import React from 'react';
-import H1 from 'components/H1';
-import HexagonMesh from './HexagonMesh';
+// utils
+import styled from 'styled-components';
+// components
+import HexagonalGrid from './components/HexagonalGrid';
+import PlayersPanel from './components/PlayersPanel/PlayersPanel';
+import ColorPicker from './components/ColorPicker';
 import Button from '../../components/Button';
+// const
+import { PALETTE } from './constants/palette';
+
+const Container = styled.div`
+  margin: 20px auto;
+  
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    // color: #43516c;
+    margin: 20px 0;
+    text-align: center;
+    
+    span {
+      margin-left: 3px;
+      padding: 2px 4px;
+      background-color: #d85426;
+      color: #fafafa;
+    }
+  }
+`;
 
 class GamePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    this.drawField();
+    this.initializeField();
   }
 
-  drawField = () => {
+  initializeField = () => {
     const width = 768;
     const height = 510;
-    const radius = 10;
+    const radius = 9;
 
     const topology = hexTopology(radius, width, height);
     const projection = hexProjection(radius);
@@ -36,43 +62,23 @@ class GamePage extends React.Component { // eslint-disable-line react/prefer-sta
       .selectAll('path')
       .data(topology.objects.hexagons.geometries)
       .enter().append('path')
-      .classed('fill', (d) => Boolean(d.fill))
+      // .style('fill', (d) => getColor(d.fill + 4))
+      .style('fill', (d) => PALETTE[d.fill])
       .attr('d', (d) => path(topojson.feature(topology, d)))
       .attr('row', (d) => d.row - 1)
-      .attr('col', (d) => d.col + 1)
-      .on('mousedown', mousedown)
-      .on('mousemove', mousemove)
-      .on('mouseup', mouseup);
+      .attr('col', (d) => d.col + 1);
 
     svg.append('path')
       .datum(topojson.mesh(topology, topology.objects.hexagons))
       .attr('class', 'mesh')
       .attr('d', path);
 
+    // todo: use d.selected to draw border
     const border = svg.append('path')
       .attr('class', 'border')
-      .call(redraw);
+      .call(drawBorder);
 
-    let mousing = 0;
-
-    function mousedown(d) {
-      mousing = d.selected ? -1 : +1;
-      mousemove.apply(this, arguments);
-    }
-
-    function mousemove(d) {
-      if (mousing) {
-        d3.select(this).classed('selected', d.selected = mousing > 0);
-        border.call(redraw);
-      }
-    }
-
-    function mouseup() {
-      mousemove.apply(this, arguments);
-      mousing = 0;
-    }
-
-    function redraw(border) {
+    function drawBorder(border) {
       border.attr('d', path(topojson.mesh(topology, topology.objects.hexagons,
         function(a, b) { return a.selected ^ b.selected; }
       )));
@@ -101,7 +107,7 @@ class GamePage extends React.Component { // eslint-disable-line react/prefer-sta
           geometries.push({
             type: 'Polygon',
             arcs: [[q, q + 1, q + 2, ~(q + (n + 2 - (j & 1)) * 3), ~(q - 2), ~(q - (n + 2 + (j & 1)) * 3 + 2)]],
-            fill: Math.round(Math.random()),
+            fill: Math.round(Math.random()*6),
             row: j,
             col: i,
             selected: 0,
@@ -132,19 +138,22 @@ class GamePage extends React.Component { // eslint-disable-line react/prefer-sta
     }
   };
 
-  generateField = () => {
-    console.log('generateField()');
-    this.drawField();
+  generateNewField = () => {
+    console.log('generateNewField()');
+    this.initializeField();
   };
 
   render() {
     return (
-      <div>
-        <H1>HEXA v2</H1>
-        <h3>The incredible war of colors</h3>
-        <Button onClick={this.generateField}>Generate!</Button>
-        <HexagonMesh id="hexagon-container" />
-      </div>
+      <Container>
+        <div className="title">Hexagon<span>WARZ</span></div>
+        <PlayersPanel />
+        <HexagonalGrid id="hexagon-container" />
+        <div className="bottom-panel">
+          <ColorPicker />
+        </div>
+        <Button onClick={this.generateNewField}>Generate!</Button>
+      </Container>
     );
   }
 }

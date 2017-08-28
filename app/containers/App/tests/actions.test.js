@@ -2,13 +2,13 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-} from '../constants';
+} from '../redux/constants';
 
 import {
   loadRepos,
   reposLoaded,
   repoLoadingError,
-} from '../actions';
+} from '../redux/actions';
 
 describe('App Actions', () => {
   describe('loadRepos', () => {

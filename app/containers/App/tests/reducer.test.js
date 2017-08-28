@@ -1,11 +1,11 @@
 import { fromJS } from 'immutable';
 
-import appReducer from '../reducer';
+import appReducer from '../redux/reducer';
 import {
   loadRepos,
   reposLoaded,
   repoLoadingError,
-} from '../actions';
+} from '../redux/actions';
 
 describe('appReducer', () => {
   let state;

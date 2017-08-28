@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-const HexagonMesh = styled.div`
+const HexagonalGrid = styled.div`
 
-  margin: 20px auto;
+  margin: 10px auto;
 
   .hexagon {
     fill: white;
     pointer-events: all;
+    opacity: .95;
   }
 
   .hexagon path {
@@ -15,17 +16,18 @@ const HexagonMesh = styled.div`
   }
 
   .hexagon :hover {
-    fill: pink;
+    fill: #fff !important;
   }
 
   .hexagon .fill {
-    fill: red;
+    fill: #5e5e5e;
   }
 
   .mesh {
     fill: none;
     stroke: #000;
-    stroke-opacity: .2;
+    stroke-opacity: .5;
+    stroke-width: .5;
     pointer-events: none;
   }
 
@@ -37,4 +39,4 @@ const HexagonMesh = styled.div`
   }
 `;
 
-export default HexagonMesh;
+export default HexagonalGrid;

@@ -22,7 +22,7 @@ import 'sanitize.css/sanitize.css';
 import App from 'containers/App';
 
 // Import selector for `syncHistoryWithStore`
-import { makeSelectLocationState } from 'containers/App/selectors';
+import { makeSelectLocationState } from 'containers/App/redux/selectors';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -47,7 +47,7 @@ import createRoutes from './routes';
 
 // Observe loading of Google Font (to remove font, remove the <link> tag in
 // the index.html file and this observer)
-const fontObserver = new FontFaceObserver('Nunito', {});
+const fontObserver = new FontFaceObserver('Encode Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 fontObserver.load().then(() => {

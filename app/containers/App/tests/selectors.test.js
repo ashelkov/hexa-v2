@@ -7,7 +7,7 @@ import {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocationState,
-} from '../selectors';
+} from '../redux/selectors';
 
 describe('selectGlobal', () => {
   it('should select the global state', () => {
