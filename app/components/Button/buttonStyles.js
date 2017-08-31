@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const buttonStyles = css`
   display: inline-block;
   box-sizing: border-box;
-  padding: 0.5em 2em;
+  padding: 0.5em 1.5em;
   text-decoration: none;
   border-radius: 4px;
   -webkit-font-smoothing: antialiased;
@@ -14,11 +14,10 @@ const buttonStyles = css`
   // font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
-  border: 2px solid #056571;
   color: #43516C;
   text-transform: uppercase;
   transition: .2s all;
-  background-color: #43516c;
+  background-color: #E86A22;
   color: #f5f5f5;
   
   &:hover {

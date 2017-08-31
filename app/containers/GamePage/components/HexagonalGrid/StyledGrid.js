@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HexagonalGrid = styled.div`
+const StyledGrid = styled.div`
 
   margin: 10px auto;
 
@@ -39,4 +39,4 @@ const HexagonalGrid = styled.div`
   }
 `;
 
-export default HexagonalGrid;
+export default StyledGrid;
