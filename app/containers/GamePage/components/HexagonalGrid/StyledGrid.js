@@ -4,23 +4,19 @@ const StyledGrid = styled.div`
 
   margin: 10px auto;
 
-  .hexagon {
+  .svg-grid {
     fill: white;
     pointer-events: all;
     opacity: .95;
   }
 
-  .hexagon path {
+  .svg-grid path {
     -webkit-transition: fill 250ms linear;
     transition: fill 250ms linear;
   }
 
-  .hexagon :hover {
-    fill: #fff !important;
-  }
-
-  .hexagon .fill {
-    fill: #5e5e5e;
+  .svg-grid .hex:hover {
+    fill: #fff !important;  
   }
 
   .mesh {

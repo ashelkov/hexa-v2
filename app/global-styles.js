@@ -1,4 +1,5 @@
 import { injectGlobal } from 'styled-components';
+import { COLORS } from './css-variables';
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
@@ -12,8 +13,8 @@ injectGlobal`
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #faf8ef;
-    color: #776E65;
+    background: ${COLORS.background};
+    color: ${COLORS.text};
     font-size: 18px;
   }
 
@@ -30,21 +31,5 @@ injectGlobal`
   label {
     font-family: 'Encode Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.5em;
-  }
-  
-  .primary {
-    color: #43516c;
-  }  
-  .secondary {
-    color: #e5e8c7;
-  }  
-  .color-danger {
-    color: #d85426;
-  }  
-  .color-warning {
-    color: #dba531;
-  } 
-  .color-info {
-    color: #05659e;
   }
 `;

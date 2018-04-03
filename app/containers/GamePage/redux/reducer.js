@@ -15,14 +15,14 @@ const initialState = fromJS({
   },
   palette: PALETTE,
   players: [
-    { captured: [], color: null, potential: [], score: null },
-    { captured: [], color: null, potential: [], score: null },
+    { captured: [], color: null, next: [], score: null },
+    { captured: [], color: null, next: [], score: null },
   ],
   state: {
     isStarted: false,
     isFinished: false,
     activePlayer: null,
-    moves: 0,
+    turns: 0,
   },
 });
 
@@ -30,8 +30,8 @@ function gameReducer(state = initialState, action) {
   switch (action.type) {
     case GENERATE_NEW_FIELD:
       return state
-        .set('field', action.field)
-        .setIn(['options', 'field'], action.options);
+        .set('field', fromJS(action.field))
+        .setIn(['options', 'field'], fromJS(action.options));
     case START_NEW_GAME:
       return state
         .setIn(['state', 'isStarted'], true)
